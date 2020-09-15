@@ -3,7 +3,6 @@ import json
 import os
 
 
-
 def json_csv():
     ##############################################################
     ######### Hier muss nur der Ordner angepasst werden ##########
@@ -12,8 +11,7 @@ def json_csv():
     ##############################################################
     for filename in os.listdir(directory):
         if filename.endswith(".json"):
-            
-            print(filename)
+            #print(filename)
             df = pd.read_json(directory+str(filename))
             header = ["part", "score", "position"]
             #print(df.size)
@@ -25,7 +23,7 @@ def json_csv():
                         inputx = "input"+str(x)
                         dt=pd.DataFrame(df["data"][n]["xs"][str(inputx)])
                         base = os.path.splitext(filename)[0]
-                        print(inputx)
+                        #print(inputx)
                         if int(x)== 6 and int(n) == 0:
                             dt.to_csv(directory+str(base)+'.csv', mode= 'a', index = True, header=True , columns= header)
                         else:
